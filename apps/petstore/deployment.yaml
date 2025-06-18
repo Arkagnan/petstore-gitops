@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petstore
+  namespace: petstore-development
+  #annotations:
+    #sidecar.istio.io/inject: false
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: petstore
+  template:
+    metadata:
+      labels:
+        app: petstore
+    spec:
+      containers:
+      - name: front
+        image: citizendiop/petstore-nginx:v1
+        imagePullPolicy: IfNotPresent
+      - name: petstore
+        image: citizendiop/petstore-ee7:v1
+        imagePullPolicy: IfNotPresent
