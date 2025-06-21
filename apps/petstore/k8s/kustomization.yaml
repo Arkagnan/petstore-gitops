@@ -1,0 +1,4 @@
+apiVersion: kustomization.config.k8s.io/vbeta1
+kind: Kustomization
+resources:
+- deployment.yaml
